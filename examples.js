@@ -83,7 +83,7 @@ const shape = {
 };
 const { coordinates:{start:[startx, starty]}} = shape;
 console.log(startx,starty);
-//Template strings 
+//Template Literals 
 
 
 const user = 'Bob';
@@ -92,3 +92,41 @@ const num = 17;
 
 const txt = `Hello ${user} you have ${num} letters in your inbox`;
 console.log(txt);
+const txt2 = `Now is ${Date.now()}`;
+console.log(txt2);
+
+
+
+const items = ['Tea', 'Coffee']
+const templateHtml = ` 
+<ul>
+<li>${items[0]}</li>
+<li>${items[1]}</li>
+</ul>
+`;
+console.log(templateHtml);
+//==Результат новая строка(не новый тип)
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!Objects
+
+// const prefix = '_bla_';
+// const data = {
+//     [prefix + 'name'] : 'Bob',  <----- old code
+//     [prefix + 'age'] : 25
+// };
+// console.log(data);
+const defaults = {
+    host: 'localhost',
+    dbNam: 'blog',
+    user: 'admin'
+};
+
+const opts = {
+user: 'John',
+password: 'utopia'
+};
+Object.assign(defaults, opts);
+console.log(defaults); // Перезаписывает Object defaults
+
+const result = Object.assign({}, defaults, opts);
+console.log(result); // Записывает в пустой объект {} lдва объекта 
