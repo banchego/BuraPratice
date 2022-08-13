@@ -83,3 +83,12 @@ const shape = {
 };
 const { coordinates:{start:[startx, starty]}} = shape;
 console.log(startx,starty);
+//Template strings 
+
+
+const user = 'Bob';
+const num = 17;
+// const txt = 'Hello, ' + user + ' you have '+ num + ' letters in your inbox';
+
+const txt = `Hello ${user} you have ${num} letters in your inbox`;
+console.log(txt);
