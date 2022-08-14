@@ -135,3 +135,87 @@ const defaults = {
     password: "utopia",
   };
   const resultTwo = { ...defaults, ...opts}; // Разворачивает объект, превращая его в список свойств.
+  //!!!!!!!!!!!!!!!!!!!!Prototypes
+//   const dog = {
+//     name: 'dog',
+//     voice: 'woof',
+//     say: function() {
+//         console.log(this.name, 'goes', this.voice);
+//     }
+//   };
+//   const cat = {
+//     name: 'cat',
+//     voice: 'meow',
+//     say: function() {
+//         console.log(this.name, 'goes', this.voice);
+//     }
+//   };
+//   dog.say();
+//   cat.say();
+// const animal = {
+//     say: function() {
+//             console.log(this.name, 'goes', this.voice);
+// }
+// };
+// const dog = {
+//     name: 'dog',
+//     voice: 'woof',
+//   };
+//   Object.setPrototypeOf(dog, animal);
+//   const cat = {
+//     name: 'cat',
+//     voice: 'meow',
+//   };
+//   Object.setPrototypeOf(cat, animal);
+//   dog.say();
+//   cat.say();
+// const animal = {
+//     say: function() {
+//             console.log(this.name, 'goes', this.voice);
+// }
+// };
+// const dog = {
+//     name: 'dog',
+//     voice: 'woof',
+//   };
+//   Object.setPrototypeOf(dog, animal);
+//   const cat = {
+//     name: 'cat',
+//     voice: 'meow',
+//   };
+//   Object.setPrototypeOf(cat, animal);
+//   dog.say();
+//   cat.say();
+// const dog = Object.create(animal);
+// dog.name = 'Dog';
+// dog.voice = 'woof';
+
+// dog.say();
+
+function createAnimal(name, voice) {
+    const beast = Object.create(animal);
+    beast.name = name;
+    beast.voice = voice; 
+    return beast;
+}
+// const sobaka = createAnimal('dog', 'woof');
+// const koshka = createAnimal('cat', 'meow');
+
+// sobaka.say();
+// koshka.say();
+
+function Animal(name, voice) {
+    this.name = name;
+    this.voice = voice; 
+}
+Animal.prototype.say = function() {
+            console.log(this.name, 'goes', this.voice);
+}
+
+const sobaka = new Animal('dog', 'woof');
+const koshka = new Animal('cat', 'meow');
+sobaka.say();
+koshka.say();
+// 1. Object.setPrototypeOf
+// 2. Object.create
+// 3. Using new
