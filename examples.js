@@ -1,51 +1,43 @@
-'use strict';
+"use strict";
 //Rest parameter Один и последний
 
-max(1,3);
+max(1, 3);
 max(1, 3, 3, 4, 5);
 
-
-function max(a, b, ...numbers){
-console.log(numbers);
-
+function max(a, b, ...numbers) {
+  console.log(numbers);
 }
 /* Destructuring - деструктуризация - позволяет достать значение,
  с какой либо структуры данных. */
 
- const person = {
-    name: {
-        first: 'Nick',
-        last : 'Bitkov'
-    },
-    // firstName: 'Peter',
-    // lastName: 'Smith',
-    age: 27
-    
- };
- 
- // const firstName = person.firstName;
- 
+const person = {
+  name: {
+    first: "Nick",
+    last: "Bitkov",
+  },
+  // firstName: 'Peter',
+  // lastName: 'Smith',
+  age: 27,
+};
+
+// const firstName = person.firstName;
+
 //  const {firstName, lastName} = person;
 
 //  const { name: {first: firstName, last: lastName}} = person; // saved in const firstName ( name: firstName)
 //  console.log(firstName, lastName);
 
-function connect({
-    host = 'localhost',
-    port = 12345,
-    user = 'guest'
-}) {
-    console.log('user', user, 'port', port, 'host', host);
-
+function connect({ host = "localhost", port = 12345, user = "guest" }) {
+  console.log("user", user, "port", port, "host", host);
 }
-connect({port: 1111});
+connect({ port: 1111 });
 
 const dict = {
-    duck: 'quack',
-    dog: 'wuff',
-    mouse: 'squeak'
-}
-const { duck, ...otherAnimals} = dict;
+  duck: "quack",
+  dog: "wuff",
+  mouse: "squeak",
+};
+const { duck, ...otherAnimals } = dict;
 console.log(otherAnimals);
 /* const {name, age} = person;
 --упрощает получение свойств из объектов --
@@ -55,38 +47,41 @@ console.log(otherAnimals);
 //!!!!!!!!!!!!Array Destructuring
 
 const line = [
-    [10, 17],
-    [14,7]
+  [10, 17],
+  [14, 7],
 ];
 
-const [[fistValue] , [secondValue] ] = line;
-console.log(fistValue, secondValue );
+const [[fistValue], [secondValue]] = line;
+console.log(fistValue, secondValue);
 
-const dictArr= {
-    duck: 'quack',
-    dog: 'wuff',
-    mouse: 'squeak',
-    hamster: 'squeak'
+const dictArr = {
+  duck: "quack",
+  dog: "wuff",
+  mouse: "squeak",
+  hamster: "squeak",
 };
 const res = Object.entries(dictArr) //Создает двухмерный массив с ключами
-.filter((arr)=>arr[1]=== 'squeak' )
-.map(([key])=> key); //.filter((key, value)=>value=== 'squeak' );
+  .filter((arr) => arr[1] === "squeak")
+  .map(([key]) => key); //.filter((key, value)=>value=== 'squeak' );
 console.log(res);
 //Combine destructuring for arrays and objects
 
 const shape = {
-    type: 'segment',
-    coordinates: {
-        start: [10, 15],
-        end: [17,15]
-    }
+  type: "segment",
+  coordinates: {
+    start: [10, 15],
+    end: [17, 15],
+  },
 };
-const { coordinates:{start:[startx, starty]}} = shape;
-console.log(startx,starty);
-//Template Literals 
+const {
+  coordinates: {
+    start: [startx, starty],
+  },
+} = shape;
+console.log(startx, starty);
+//Template Literals
 
-
-const user = 'Bob';
+const user = "Bob";
 const num = 17;
 // const txt = 'Hello, ' + user + ' you have '+ num + ' letters in your inbox';
 
@@ -95,9 +90,7 @@ console.log(txt);
 const txt2 = `Now is ${Date.now()}`;
 console.log(txt2);
 
-
-
-const items = ['Tea', 'Coffee']
+const items = ["Tea", "Coffee"];
 const templateHtml = ` 
 <ul>
 <li>${items[0]}</li>
@@ -115,18 +108,30 @@ console.log(templateHtml);
 //     [prefix + 'age'] : 25
 // };
 // console.log(data);
-const defaults = {
-    host: 'localhost',
-    dbNam: 'blog',
-    user: 'admin'
-};
+// const defaults = {
+//   host: "localhost",
+//   dbNam: "blog",
+//   user: "admin",
+// };
 
-const opts = {
-user: 'John',
-password: 'utopia'
-};
+// const opts = {
+//   user: "John",
+//   password: "utopia",
+// };
 Object.assign(defaults, opts);
 console.log(defaults); // Перезаписывает Object defaults
 
 const result = Object.assign({}, defaults, opts);
-console.log(result); // Записывает в пустой объект {} lдва объекта 
+console.log(result); // Записывает в пустой объект {} два объекта
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!Spread operator for Objects
+const defaults = {
+    host: "localhost",
+    dbNam: "blog",
+    user: "admin",
+  };
+  
+  const opts = {
+    user: "John",
+    password: "utopia",
+  };
+  const resultTwo = { ...defaults, ...opts}; // Разворачивает объект, превращая его в список свойств.
