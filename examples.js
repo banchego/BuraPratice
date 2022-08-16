@@ -37,7 +37,7 @@ const dict = {
   dog: "wuff",
   mouse: "squeak",
 };
-const { duck, ...otherAnimals } = dict;
+const { duck2, ...otherAnimals } = dict;
 console.log(otherAnimals);
 /* const {name, age} = person;
 --упрощает получение свойств из объектов --
@@ -125,17 +125,17 @@ const result = Object.assign({}, defaults, opts);
 console.log(result); // Записывает в пустой объект {} два объекта
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!Spread operator for Objects
 const defaults = {
-    host: "localhost",
-    dbNam: "blog",
-    user: "admin",
-  };
-  
-  const opts = {
-    user: "John",
-    password: "utopia",
-  };
-  const resultTwo = { ...defaults, ...opts}; // Разворачивает объект, превращая его в список свойств.
-  //!!!!!!!!!!!!!!!!!!!!Prototypes
+  host: "localhost",
+  dbNam: "blog",
+  user: "admin",
+};
+
+const opts = {
+  user: "John",
+  password: "utopia",
+};
+const resultTwo = { ...defaults, ...opts }; // Разворачивает объект, превращая его в список свойств.
+//!!!!!!!!!!!!!!!!!!!!Prototypes
 //   const dog = {
 //     name: 'dog',
 //     voice: 'woof',
@@ -193,10 +193,10 @@ const defaults = {
 // dog.say();
 
 function createAnimal(name, voice) {
-    const beast = Object.create(animal);
-    beast.name = name;
-    beast.voice = voice; 
-    return beast;
+  const beast = Object.create(animal);
+  beast.name = name;
+  beast.voice = voice;
+  return beast;
 }
 // const sobaka = createAnimal('dog', 'woof');
 // const koshka = createAnimal('cat', 'meow');
@@ -204,18 +204,42 @@ function createAnimal(name, voice) {
 // sobaka.say();
 // koshka.say();
 
-function Animal(name, voice) {
-    this.name = name;
-    this.voice = voice; 
-}
-Animal.prototype.say = function() {
-            console.log(this.name, 'goes', this.voice);
-}
+// function Animal(name, voice) {
+//     this.name = name;
+//     this.voice = voice;
+// }
+// Animal.prototype.say = function() {
+//             console.log(this.name, 'goes', this.voice);
+// }
 
-const sobaka = new Animal('dog', 'woof');
-const koshka = new Animal('cat', 'meow');
-sobaka.say();
-koshka.say();
+// const sobaka = new Animal('dog', 'woof');
+// const koshka = new Animal('cat', 'meow');
+// sobaka.say();
+// koshka.say();
 // 1. Object.setPrototypeOf
 // 2. Object.create
 // 3. Using new
+//////!!!!!!!!!!!!!!Classes
+
+class Animal {
+  constructor(name, voice) {
+    this.name = name;
+    this.voice = voice;
+  }
+  say() {
+    console.log(this.name, 'goes', this.voice);
+  }
+};
+// duck ->Bird.prototype -> Animal.prototype -> Object.prototype -> null
+class Bird extends Animal {
+  constructor(name, voice, canFly){
+    super (name, voice);
+    this.say(); // super.say()
+    this.canFly = canFly;
+  }
+  say() {
+    console.log('Birds don\'t like to talk');
+  }
+};
+let duck = new Bird('Duck', 'quack', true);
+duck.say();
